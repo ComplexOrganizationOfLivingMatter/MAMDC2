@@ -1,0 +1,25 @@
+Canal rojo -> desmina marcando las fibras musculares
+Canal azul -> topro marcando núcleos
+
+Papers realizando cuantificacions en cultivos de fibras musculares a través de análisis de imagen. Mayormente operan en 3D.
+
+    https://skeletalmusclejournal.biomedcentral.com/articles/10.1186/s13395-021-00284-3
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC6419977/
+    https://skeletalmusclejournal.biomedcentral.com/articles/10.1186/s13395-022-00297-6
+    https://www.liebertpub.com/doi/10.1089/ten.tea.2024.0049
+
+Preprocessing:
+
+	projection Z max (visualmente parece que no aporta mucho trabajar en 2D)
+	gaussian blue (sigma radius 3 pixels)
+	thresholding (Huang [2D], Li*)
+	//median filter (5, para eliminar ruido)
+	morpholibJ->Plugins-> remove small objects (200 pixels)
+	fill holes
+
+Para intentar hacer que 2 fibras solapantes en Z se separen:
+
+	Podemos buscar las X-like regions, y unir los branches 2 a 2 que se unan con menor diferencia de ángulo.
+
+
+Vamos a segmentar tanto mioblastos como miotubos. Y ya una vez esté la imagen completa segmentada simplemente hacemos un filtrado por tamanho para descartar los mioblastos.
