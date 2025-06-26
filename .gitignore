@@ -63,3 +63,4 @@ raw images/*
 trainingDataset/*
 *.ai
 *.asv
+/code/lib/Skeleton

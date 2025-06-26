@@ -1,9 +1,9 @@
 function     [aveg_meanDiam, std_meanDiam, max_maxDiam, aveg_maxDiam, ....
     std_maxDiam, aveg_stdDiam, std_stdDiam,avg_diamWholeCulture, std_diamWholeCulture, listOfMeanDiam,listOfMaxDiam,listOfStdDiam] ...
- = diameter_measurement(L_skel,ptDistance)
+ = diameter_measurement(L_skel,BW_clean,ptDistance)
 
     
-    numSkel = max(L_skel(:,:));
+    numSkel = max(L_skel(:));
     mean_diameter = zeros(1, numSkel);
     max_diameter = zeros(1, numSkel);
     std_diameter = zeros(1, numSkel);
@@ -11,7 +11,8 @@ function     [aveg_meanDiam, std_meanDiam, max_maxDiam, aveg_maxDiam, ....
 
     for nSkel = 1:numSkel
 
-        BW_skel = L_skel(L_skel == nSkel);
+        BW_skel=false(size(L_skel));
+        BW_skel(L_skel == nSkel) = 1;
     
     
         % 1. Get skeleton coordinates
@@ -32,10 +33,10 @@ function     [aveg_meanDiam, std_meanDiam, max_maxDiam, aveg_maxDiam, ....
         idx_nearest = knnsearch(skel_pts, xy_ds);    % nearest real skeleton pixel
         snapped_pts = skel_pts(idx_nearest, :);      % [X Y] of snapped points
     
-        % 6. Plot
-        imshow(BW_skel); hold on;
-        plot(snapped_pts(:,1), snapped_pts(:,2), 'r.', 'MarkerSize', 15);
-        
+        % % 6. Plot
+        % imshow(BW_skel); hold on;
+        % plot(snapped_pts(:,1), snapped_pts(:,2), 'r.', 'MarkerSize', 15);
+        % 
     
     
         %% Quantify equidistant diameter per fibre
@@ -57,7 +58,7 @@ function     [aveg_meanDiam, std_meanDiam, max_maxDiam, aveg_maxDiam, ....
         % 3. Extract distances at point locations
         min_distances = D(sub2ind(size(BW_clean), yq, xq));
 
-        allMinDistances = [allMinDistances,min_distances];
+        allMinDistances = [allMinDistances;min_distances];
         mean_diameter(nSkel) = mean(min_distances);
         max_diameter(nSkel) = max(min_distances);
         std_diameter(nSkel) = std(min_distances);
@@ -66,7 +67,7 @@ function     [aveg_meanDiam, std_meanDiam, max_maxDiam, aveg_maxDiam, ....
     
     aveg_meanDiam = mean(mean_diameter);
     std_meanDiam = std(mean_diameter);
-    max_maxDiam = mean(max_diameter);
+    max_maxDiam = max(max_diameter);
     aveg_maxDiam = mean(max_diameter);
     std_maxDiam = std(max_diameter);
     aveg_stdDiam = mean(std_diameter);
