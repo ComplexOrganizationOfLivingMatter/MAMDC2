@@ -39,15 +39,15 @@ for nImg =1:nOfImages
     imNuclei=imresize(imNuclei,size(rawImg),'nearest');
     
 
-    if exist(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')),'file')
-        load(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')))
-        allImgsParams(nImg) = myotubesParams;
-    else
-        [myotubesParams,nucleiClusters] = myotubes_analysis(BW_clean, BW_skel,imNuclei,rawImg);
+    % if exist(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')),'file')
+    %     load(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')))
+    %     allImgsParams(nImg) = myotubesParams;
+    % else
+        [myotubesParams,nucleiIng_filt,nucleiClusters] = myotubes_analysis(BW_clean, BW_skel,imNuclei,rawImg);
         myotubesParams.fileName = imageName;
         allImgsParams(nImg) = myotubesParams;
-        save(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')),'myotubesParams','nucleiClusters')
-    end
+        save(fullfile(extractedFeaturesPath,strrep(imageName,'.tif','.mat')),'myotubesParams','nucleiClusters','nucleiIng_filt')
+    % end
 
     disp([num2str(nImg) '/' num2str(nOfImages) ' loaded - ' imageName])
     
@@ -55,7 +55,7 @@ for nImg =1:nOfImages
 end
 
 T = struct2table(allImgsParams);
-writetable(T,fullfile(extractedFeaturesPath,'allImagesFeatures.xlsx'))
+writetable(T,fullfile(extractedFeaturesPath,['allImagesFeatures_' date '.xlsx']))
 
 
     
