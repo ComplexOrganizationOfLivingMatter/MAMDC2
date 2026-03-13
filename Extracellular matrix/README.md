@@ -1,4 +1,4 @@
-# MAMDC2: Spatial ECM & Cell Orientation Pipeline
+# MAMDC2: Spatial ECM pipeline
 
 > **A high-throughput, multiprocessing Python pipeline for extracting topological geometry and spatial interactions between cells and the Extracellular Matrix (ECM).**
 
