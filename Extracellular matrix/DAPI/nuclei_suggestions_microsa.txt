@@ -1,0 +1,41 @@
+nuclei density
+
+keep the nuclei centroids for micro spatial analysis
+
+cell_ID
+centroid_x
+centroid_y
+
+area: "Are the mutant nuclei larger (hypertrophic) or smaller than the controls?"
+eccentricity: "This measures how circular vs. elongated a nucleus is. A value of 0 is a perfect circle, and 1 is a straight line. If your mutant cells are stretching themselves out along the fibers differently than controls, their nuclei will stretch too."
+perimeter
+mean_DAPI intensity. "By measuring the brightness of the DAPI stain inside each nucleus, you can infer chromatin density. For example, if your mutation causes cell stress or apoptosis (cell death), nuclei often shrink and become incredibly bright (pyknotic)."
+
+
+
+
+
+The Biological Question: Are your cells actively clinging to the matrix, or are they floating in the empty gaps between the fibers?
+
+Control vs. Mutant: If your mutation affects cell adhesion (like a defect in integrin receptors), you might find that Control cells have a high spatial association with Fibronectin, while Mutant cells are mathematically much further away from the fibers.
+
+
+
+1. Cell-Matrix Neighborhood (Proximity)
+Microsa uses a "radius" parameter (which we set to 25 pixels in the pipeline) to draw a virtual boundary around every single cell. It then calculates exactly how many fibers, and what type of fibers, pass through that cell's personal space.
+
+
+2. Matrix-Guided Cell Clustering
+The spatial analysis also works in reverse: it looks at a specific fiber and tells you how many cells are huddled around it.
+
+The Biological Question: Does the ECM act as a "highway" or a gathering point for your cells?
+
+Control vs. Mutant: Control cells might line up neatly along long, straight collagen fibers. Mutant cells, if they have disrupted cytoskeletons or signaling, might cluster randomly in clumps regardless of where the fibers are.
+
+
+3. Differential Affinity (Collagen vs. Fibronectin)
+Because you are analyzing two different matrices (Red = Collagen, Green = Fibronectin), Microsa's spatial outputs will allow you to compare the cells' preference for one over the other.
+
+The Biological Question: Do these cells prefer to attach to one specific type of protein?
+
+Control vs. Mutant: You might discover that Control cells associate equally with both networks, but the Mutant cells entirely avoid the collagen network and strictly associate with fibronectin.
