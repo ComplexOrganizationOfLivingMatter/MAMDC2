@@ -1,6 +1,6 @@
-# MAMDC2: Spatial ECM & Cell Orientation Pipeline
+# MAMDC2: Spatial ECM analysis
 
-> **A high-throughput, multiprocessing Python pipeline for extracting topological geometry and spatial interactions between cells and the Extracellular Matrix (ECM).**
+> **A high-throughput, multiprocessing Python pipeline for extracting topological geometry and spatial interactions between nuclei and the Extracellular Matrix (ECM).**
 
 Designed for multiplexed immunofluorescence images, this tool mathematically replicates established metrics (like Microsa) to provide rigorous, publication-ready quantification of tissue anisotropy, fiber straightness, and cell-matrix contact guidance.
 
