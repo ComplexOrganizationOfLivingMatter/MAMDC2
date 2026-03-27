@@ -2,7 +2,10 @@
 
 > **A high-throughput, multiprocessing Python pipeline for extracting topological geometry and spatial interactions between nuclei and the Extracellular Matrix (ECM).**
 
-Designed for multiplexed immunofluorescence images, this tool mathematically replicates established metrics (like Microsa) to provide rigorous, publication-ready quantification of tissue anisotropy, fiber straightness, and cell-matrix contact guidance.
+
+### 🔗 Acknowledgments & References
+
+Designed for multiplexed immunofluorescence images, this tool mathematically replicates established metrics from **[Microsa](https://github.com/VGeorgii/Microsa/tree/master)** to provide rigorous, publication-ready quantification of tissue anisotropy, fiber straightness, and cell-matrix contact guidance.
 
 ---
 
@@ -37,14 +40,24 @@ For every processed tile, the pipeline calculates both individual object data an
 
 ## 🚀 Getting Started
 
-### 1. Requirements
+### 1. Download only the Extracellular Matrix project
+
+```bash
+
+git clone --filter=blob:none --sparse https://github.com/ComplexOrganizationOfLivingMatter/MAMDC2.git
+cd MAMDC2
+git sparse-checkout set "Extracellular matrix"
+cd "Extracellular matrix"
+```
+
+### 2. Requirements
 Ensure you have the required Python libraries installed:
 
 ```bash
-pip install numpy pandas scikit-image scipy openpyxl
+pip install numpy==1.21.6 pandas==1.3.5 scikit-image==0.17.2 scipy==1.7.3 openpyxl==3.1.3 tifffile==2021.11.2
 ```
 
-### 2. Directory Setup
+### 3. Directory Setup
 Organize your tiled .tif images (multichannel) and DAPI segmentation masks into dedicated folders. Open main.py and update the paths to match your local file system:
 
 ```
@@ -53,7 +66,7 @@ OUTPUT_DIR = r'Path\to\output_results'
 DAPI_MASK_DIR = r'Path\to\dapi_masks' 
 ```
 
-### 3. Run Processing
+### 4. Run Processing
 Execute the main script. The system will automatically detect available tiles and process them using your configured CPU workers.
 
 ```bash
@@ -62,7 +75,7 @@ python main.py
 
 Note: Diagnostic intermediate images (binary masks, labeled skeletons) will be saved in a subfolder for each tile within the output directory so you can verify segmentation quality.
 
-### 4. Aggregate Data
+### 5. Aggregate Data
 Once main.py finishes, configure the target paths in aggregate_results.py and run it to generate your final statistical dataset:
 
 ```bash
