@@ -81,3 +81,7 @@ Once main.py finishes, configure the target paths in aggregate_results.py and ru
 ```bash
 python aggregate_results.py
 ```
+
+## How to cite
+[to be added]
+
