@@ -15,7 +15,7 @@ from skimage.measure import regionprops_table, label
 
 # Import custom toolkits and microsa
 import lib.ecm_utils as eu
-from microsaa import fibers_executor
+from lib.microsaa.fibseg import fibers_executor
 
 def process_single_tile(img_path, output_dir, dapi_mask_dir):
     filename = os.path.basename(img_path)
