@@ -14,7 +14,7 @@ from skimage.filters import frangi
 from skimage.measure import regionprops_table, label
 
 # Import custom toolkits and microsa
-import ecm_utils as eu
+import lib.ecm_utils as eu
 from microsaa import fibers_executor
 
 def process_single_tile(img_path, output_dir, dapi_mask_dir):
@@ -22,7 +22,7 @@ def process_single_tile(img_path, output_dir, dapi_mask_dir):
     base_name = os.path.splitext(filename)[0]
     out_file = os.path.join(output_dir, f"{base_name}_results.xlsx")
     
-    HALO_RADIUS = 75
+    HALO_RADIUS = 75 # in pixels [~50 pixels is a nucleus radius in our images]
     
     if os.path.exists(out_file):
         return f"[{filename}] Already finished. Skipping!"    

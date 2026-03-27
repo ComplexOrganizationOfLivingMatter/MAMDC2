@@ -12,7 +12,7 @@ import multiprocessing
 import concurrent.futures
 
 # Import the individual tile processor
-from tile_processor import process_single_tile
+from src.tile_processor import process_single_tile
 
 if __name__ == '__main__':
     # Required for safe execution of multiprocessing in Windows environments
