@@ -102,7 +102,7 @@ def compile_master_dataset(input_dir, output_filepath):
 
 if __name__ == '__main__':
     # --- Directory Configuration ---
-    RESULTS_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\microsa_results_tiles'
-    MASTER_OUTPUT_FILE = r'F:\Lab\MAMDC2\Extracellular matrix\master_aggregated_results.xlsx'
+    RESULTS_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\results\microsa_results_withAA_13052026'
+    MASTER_OUTPUT_FILE = r'F:\Lab\MAMDC2\Extracellular matrix\results\microsa_results_withAA_13052026\master_aggregated_results_withAA_19052026.xlsx'
     
     compile_master_dataset(RESULTS_DIR, MASTER_OUTPUT_FILE)

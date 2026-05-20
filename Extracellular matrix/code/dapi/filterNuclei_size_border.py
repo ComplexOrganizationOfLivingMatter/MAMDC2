@@ -13,8 +13,8 @@ from skimage.morphology import remove_small_objects
 
 # --- 1. Define paths ---
 # Use 'r' before quotes so Windows reads backslashes (\) correctly
-SEG_DIR = r"F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation"
-OUT_DIR = r"F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation_filtered"
+SEG_DIR = r"F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation2\withAA"
+OUT_DIR = r"F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation2_filtered\withAA"
 
 # Create the output folder if it doesn't exist
 os.makedirs(OUT_DIR, exist_ok=True)

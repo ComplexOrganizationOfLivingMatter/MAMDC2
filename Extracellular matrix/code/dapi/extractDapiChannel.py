@@ -11,12 +11,12 @@ import numpy as np
 from pathlib import Path
 
 # 1. Definir rutas (usando r"" para evitar problemas con las barras de Windows)
-source_folder = Path(r"F:\Lab\MAMDC2\Extracellular matrix\tiled_images")
+source_folder = Path(r"F:\Lab\MAMDC2\Extracellular matrix\tiled_images\first_second_batches_enhanced\noAA")
 # El nivel superior de la carpeta de imágenes
-base_parent = source_folder.parent 
+base_parent = Path(r"F:\Lab\MAMDC2\Extracellular matrix")
 
-dapi_raw_path = base_parent / "DAPI" / "raw"
-dapi_seg_path = base_parent / "DAPI" / "segmentation"
+dapi_raw_path = base_parent / "DAPI" / "raw2" / "noAA"
+dapi_seg_path = base_parent / "DAPI" / "segmentation2" / "noAA"
 
 # 2. Crear las carpetas de destino
 dapi_raw_path.mkdir(parents=True, exist_ok=True)

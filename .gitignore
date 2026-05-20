@@ -6,3 +6,5 @@
 *.docx
 *.doc
 *.docx
+*.lif
+*.pyc

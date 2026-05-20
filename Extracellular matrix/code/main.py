@@ -22,9 +22,9 @@ if __name__ == '__main__':
     multiprocessing.set_start_method('spawn', force=True)
 
     # --- Directory Configuration ---
-    INPUT_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\tiled_images'
-    OUTPUT_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\microsa_results_tiles'
-    DAPI_MASK_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation_filtered'
+    INPUT_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\tiled_images\first_second_batches_enhanced\withAA'
+    OUTPUT_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\results\microsa_results_withAA_13052026'
+    DAPI_MASK_DIR = r'F:\Lab\MAMDC2\Extracellular matrix\DAPI\segmentation2_filtered\withAA'
 
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
