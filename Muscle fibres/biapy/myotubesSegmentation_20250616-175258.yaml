@@ -1,0 +1,76 @@
+AUGMENTOR:
+  AFFINE_MODE: reflect
+  AUG_SAMPLES: true
+  BRIGHTNESS: true
+  BRIGHTNESS_FACTOR: (-0.1, 0.1)
+  CONTRAST: true
+  CONTRAST_FACTOR: (-0.1, 0.1)
+  ELASTIC: true
+  ENABLE: true
+  E_ALPHA: (12, 16)
+  E_MODE: constant
+  E_SIGMA: 4
+  HFLIP: true
+  RANDOM_ROT: true
+  RANDOM_ROT_RANGE: (-180, 180)
+  VFLIP: true
+  ZOOM: true
+  ZOOM_RANGE: (0.9, 1.1)
+DATA:
+  EXTRACT_RANDOM_PATCH: false
+  PATCH_SIZE: (1024,1024,1)
+  REFLECT_TO_COMPLETE_SHAPE: true
+  TRAIN:
+    CHECK_DATA: true
+    GT_PATH: F:\Lab\MAMDC2\trainingDataset\myotubes\curated_8_bits
+    IN_MEMORY: false
+    OVERLAP: (0,0)
+    PADDING: (0,0)
+    PATH: F:\Lab\MAMDC2\trainingDataset\myotubes\raw
+  VAL:
+    FROM_TRAIN: true
+    IN_MEMORY: false
+    RANDOM: true
+    RESOLUTION: (1,1)
+    SPLIT_TRAIN: 0.1
+LOSS:
+  CLASS_REBALANCE: true
+  TYPE: CE
+MODEL:
+  ARCHITECTURE: resunet
+  DROPOUT_VALUES:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  FEATURE_MAPS:
+  - 16
+  - 32
+  - 64
+  - 128
+  - 256
+  N_CLASSES: 2
+PROBLEM:
+  NDIM: 2D
+  TYPE: SEMANTIC_SEG
+SYSTEM:
+  NUM_CPUS: 2
+  NUM_WORKERS: 0
+  SEED: 0
+TEST:
+  ENABLE: false
+TRAIN:
+  BATCH_SIZE: 1
+  ENABLE: true
+  EPOCHS: 500
+  LR: 0.0005
+  LR_SCHEDULER:
+    MIN_LR: 1.0e-05
+    NAME: reduceonplateau
+    REDUCEONPLATEAU_FACTOR: 0.5
+    REDUCEONPLATEAU_PATIENCE: 30
+  OPTIMIZER: ADAMW
+  OPT_BETAS: (0.9, 0.999)
+  PATIENCE: 50
+  W_DECAY: 0.02
