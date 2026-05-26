@@ -29,7 +29,7 @@ All assets for this project are hosted at:
 **Contents include:**
 * **Custom Fiji Scripts:** For preprocessing and annotation data prep.
 * **BiaPy Training:** `.yaml` configuration files and trained ResU-Net weights.
-* **Nuclei Inference:** Python and Bash code for Cellpose-SAM.
+* **Nuclei Inference:** Python for Cellpose-SAM execution.
 * **Morphological Extraction:** The MATLAB R2023b post-processing suite.
 
 ---
@@ -39,16 +39,16 @@ All assets for this project are hosted at:
 ### Phase 1: Preprocessing & Annotation
 * **Data Prep:** Custom Fiji scripts to prepare raw microscopy stacks for annotation. Image cropping and preliminary segmentation.
 
-* **Annotation:** Generating ground truth datasets from preliminary segmentation using Napari.
+* **Annotation:** Preliminary segmentation were manually refined in  [Napari](https://napari.org/stable/getting_started/installation.html#napari-installation) to generate ground truth datasets for DL-based segmentation. 
 
 ### Phase 2.1: Training of semantic segmentation model and inference of myotubes (BiaPy)
-* **Architecture:** 2D ResU-Net.
-* **Configuration:** Use the provided `.yaml` files in the `/training` folder to replicate the environment and hyperparameters.
+* [Biapy installation](https://biapy.readthedocs.io/en/latest/get_started/installation.html)
+* **Configuration:** Use the provided `.yaml` files in the `/biapy` folder to replicate the configuration and hyperparameters.
 * **Weights:** Pre-trained model weights are provided for direct inference on similar myotube datasets.
 
 ### Phase 2.2: Inference of nuclei through Cellpose-SAM pretrained model
-* Cellpose-SAM installation
-* Bash file and .py script to be executed in a cluster.
+* [Cellpose-SAM installation](https://github.com/mouseland/cellpose) 
+* Python script to run default inference.
 
 ### Phase 3: Post-Processing & Feature Extraction (MATLAB)
 Once inference is complete, the MATLAB pipeline handles the biological quantification:
